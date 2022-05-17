@@ -25,11 +25,16 @@ import HelloWorld from '@/components/HelloWorld.vue'
 <style>
 @import '@/assets/base.css';
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-
   font-weight: normal;
 }
 
@@ -79,6 +84,42 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
+}
+
+.container {
+  max-width: 500px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 1px solid steelblue;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  margin-left: 30px;
+}
+
+.bnt:active {
+  transform: scale(0.98);
+}
+
+.bnt:focus {
+  outline: none;
 }
 
 @media (min-width: 1024px) {
