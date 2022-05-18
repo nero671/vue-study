@@ -1,7 +1,7 @@
  <template>
    <div class="header-form">
      <h1>{{ title }}</h1>
-     <Button @click="onClick()" text="Add Task" color="#41B879" />
+     <Button @click="onClick" @toggle-add-task="$emit('toggle-add-task')" :text="showAddTask ? 'Close' : 'Add Task'" :color="showAddTask ? 'red' : '#41B879'" />
    </div>
  </template>
 
@@ -12,10 +12,11 @@
     components: {Button},
     props: {
       title: String,
+      showAddTask: Boolean,
     },
     methods: {
       onClick() {
-        console.log('click')
+        this.$emit('btn-click')
       }
     }
   }

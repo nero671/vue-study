@@ -1,7 +1,10 @@
 <template>
   <div class="container">
-    <HeaderForm title="Task Tracker" />
-    <AddTask @add-task="addTask" />
+    <HeaderForm @btn-click="toggleAddTask" title="Task Tracker" :showAddTask="showAddTask" />
+    <div v-show="showAddTask">
+      <AddTask @add-task="addTask" />
+    </div>
+
     <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :key="tasks.id" :tasks="tasks" />
   </div>
 </template>
@@ -19,10 +22,14 @@ import AddTask from "../components/AddTask.vue";
     },
     data() {
       return {
-        tasks: []
+        tasks: [],
+        showAddTask: false
       }
     },
     methods: {
+      toggleAddTask() {
+        this.showAddTask = !this.showAddTask;
+      },
       addTask(task) {
         this.tasks = [...this.tasks, task]
         console.log(task)
