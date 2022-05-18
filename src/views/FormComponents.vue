@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <HeaderForm title="Task Tracker" />
+    <AddTask @add-task="addTask" />
     <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :key="tasks.id" :tasks="tasks" />
   </div>
 </template>
@@ -8,11 +9,13 @@
 <script>
 import HeaderForm from "../components/HeaderForm.vue";
 import Tasks from "../components/Tasks.vue";
+import AddTask from "../components/AddTask.vue";
   export default {
     name: 'FormComponents',
     components: {
       HeaderForm,
-      Tasks
+      Tasks,
+      AddTask
     },
     data() {
       return {
@@ -20,6 +23,10 @@ import Tasks from "../components/Tasks.vue";
       }
     },
     methods: {
+      addTask(task) {
+        this.tasks = [...this.tasks, task]
+        console.log(task)
+      },
       deleteTask(id) {
         this.tasks = this.tasks.filter((task) => task.id !== id);
       },
